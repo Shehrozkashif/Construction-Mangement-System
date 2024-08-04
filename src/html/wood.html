@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<style>
+				body
+				{
+					font-family: Arial, sans-serif;
+					background-image: url("https://www.ie.edu/insights/wp-content/uploads/2020/11/VanSchendel-Construction.jpg");
+					background-size: cover;
+					background-position: center;
+					padding: 20px;
+				}
+
+				h1
+				{
+					text-align: center;
+				}
+				.data-field
+				{
+					border: none;
+					background-color: transparent;
+					text-align: center;
+					width: 100%;
+					box-sizing: border-box;
+				}
+
+				table
+				{
+					width: 100%;
+					border-collapse: collapse;
+					margin-bottom: 20px;
+				}
+
+				th, td
+				{
+					border: 1px solid #ddd;
+					padding: 10px;
+					text-align: center;
+				}
+
+				th
+				{
+					background-color: #f5f5f5;
+				}
+
+				tr:nth-child(even)
+				{
+					background-color: #fafafa;
+				}
+
+				.input-field
+				{
+					width: 100%;
+					box-sizing: border-box;
+					padding: 5px;
+					border: 1px solid #ccc;
+					border-radius: 3px;
+					font-size: 14px;
+				}
+
+				.total-row
+				{
+					font-weight: bold;
+				}
+
+				.btn-calculate,
+				.btn-save,
+				.btn-edit
+				{
+					background-color: #4CAF50;
+					color: #fff;
+					border: none;
+					padding: 10px 20px;
+					text-align: center;
+					text-decoration: none;
+					display: inline-block;
+					font-size: 14px;
+					border-radius: 3px;
+					cursor: pointer;
+					margin-right: 10px;
+				}
+				.output
+				{	
+					width: 100%;
+					overflow-y: auto;
+					background-color: #fff;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+					display: none;
+					overflow-x: hidden;
+					
+				}
+				.scrollable-div
+				{
+					height: 200px;
+					width: 100%;
+					overflow-y: auto;
+					background-color: #fff;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+					display: inline-block;
+					overflow-x: hidden;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+				}
+				
+				.scrollable-div table
+				{
+					width: 100%;
+					table-layout: fixed;
+				}
+				
+				p
+				{
+					display: inline;
+				}
+
+				.btn-calculate:hover,
+				.btn-save:hover,
+				.btn-edit:hover {
+					background-color: #45a049;
+				}
+				.paragraph
+				{
+				  display: inline;
+				}
+			</style>
+		</head>
+		<body>
+			<script type="module" src="firebase.js"></script>
+			<script type="module" src="main.js"></script>	
+			<h1>WOOD</h1>
+
+			<form id="billingForm">
+			<table>
+				<tr>
+					<th>Ordered Date</th>
+					<th>Delivery Date</th>
+					<th>Vendor Name</th>
+					<th>Vendor Mobile</th>
+					<th>Item Name</th>
+					<th>Quantity</th>
+					<th>Price per Item</th>
+					<th>Total Amount</th>
+				</tr>
+				<tr>
+					<td><input type="date" id="orderedDate" name="orderedDate" class="input-field" required></td>
+					<td><input type="date" id="deliveryDate" name="deliveryDate" class="input-field" required></td>
+					<td><input type="text" id="vendorName" name="vendorName" class="input-field" required></td>
+					<td><input type="tel" id="vendorMobile" name="vendorMobile" class="input-field" required></td>
+					<td><input type="text" id="itemName" name="itemName" class="input-field" required></td>
+					<td><input type="number" id="quantity" name="quantity" class="input-field" required></td>
+					<td><input type="number" step="0.01" id="price" name="price" class="input-field" required></td>
+					<td><input type="text" id="totalAmount" name="totalAmount" class="input-field" disabled readonly></td>
+				</tr>
+			</table>
+
+			<button type="button" id="btn-total-cal" class="btn-calculate">Calculate Total</button>
+			<button type="button" id="btn-save-data" class="btn-save">Save</button>
+			<button type="button" id="btn-edit-data" class="btn-edit" id="edtButton">Edit</button>
+			</form><br>
+			<div class = "scrollable-div" id = "scrollable-div">		
+				<table id="data-table">
+					<tr>
+						<th>Ordered Date</th>
+						<th>Delivery Date</th>
+						<th>Vendor Name</th>
+						<th>Vendor Mobile</th>
+						<th>Item Name</th>
+						<th>Quantity</th>
+						<th>Price per Item</th>
+						<th>Total Amount</th>
+					</tr>
+				</table>
+			</div>      
+			<br><br>
+			<div class="output" id="output">
+	
+			</div>
+    
+			<script>
+				function calculateTotal()
+				{
+					if(verifyData())
+					{
+						var quantity = parseFloat(document.getElementById("quantity").value);
+						var price = parseFloat(document.getElementById("price").value);
+						
+						var div = document.getElementById("output");
+						
+						div.style.display = "inline-block";
+						
+						var totalAmount = quantity * price;
+						document.getElementById("totalAmount").value = totalAmount.toFixed(2);
+
+						var outputElement = document.getElementById("output");
+						outputElement.innerHTML = "<h2>Output</h2>";
+						outputElement.innerHTML += "<p>Ordered Date: " + document.getElementById("orderedDate").value + "</p><br><br>";
+						outputElement.innerHTML += "<p>Delivery Date: " + document.getElementById("deliveryDate").value + "</p><br><br>";
+						outputElement.innerHTML += "<p>Vendor Name: " + document.getElementById("vendorName").value + "</p><br><br>";
+						outputElement.innerHTML += "<p>Vendor Mobile: " + document.getElementById("vendorMobile").value + "</p><br><br>";
+						outputElement.innerHTML += "<p>Item Name: " + document.getElementById("itemName").value + "</p><br><br>";
+						outputElement.innerHTML += "<p>Quantity: " + quantity + "</p><br><br>";
+						outputElement.innerHTML += "<p>Price per Item: $" + price.toFixed(2) + "</p><br><br>";
+						outputElement.innerHTML += "<p>Total Amount: $" + totalAmount.toFixed(2) + "</p>";
+					}
+				}
+
+				function saveData()
+				{
+					if(verifyData())
+					{
+						var orderedDate = document.getElementById("orderedDate").value;
+						var deliveryDate = document.getElementById("deliveryDate").value;
+						var vendorName = document.getElementById("vendorName").value;
+						var vendorMobile = document.getElementById("vendorMobile").value;
+						var itemName = document.getElementById("itemName").value;
+						var quantity = document.getElementById("quantity").value;
+						var price = document.getElementById("price").value;
+						var totalAmount = document.getElementById("totalAmount").value;
+
+						var table = document.getElementById("data-table");
+
+						var newRow = table.insertRow();
+						newRow.innerHTML = `<td><input type="text" value="${orderedDate}" class="data-field" ></td><td><input type="text" value="${deliveryDate}" class="data-field"></td><td><input type="text" value="${vendorName}" class="data-field"></td><td><input type="text" value="${vendorMobile}" class="data-field"></td><td><input type="text" value="${itemName}" class="data-field"></td><td><input type="text" value="${quantity}" class="data-field"></td><td><input type="text" value="$${price}" class="data-field"></td><td><input type="text" value="$${totalAmount}" class="data-field"></td>`;
+						var dataFields = newRow.getElementsByClassName("data-field");
+
+						for (var i = 0; i < dataFields.length; i++)
+						{
+							dataFields[i].disabled = true;
+						}
+					}
+				}
+		
+				function editData()
+				{
+					var button = document.getElementById("edtButton");
+					var dataFields = document.getElementsByClassName("data-field");
+
+					if (dataFields[0].disabled === true)
+					{
+						button.innerHTML = "Stop";
+						for (var i = 0; i < dataFields.length; i++)
+						{
+							dataFields[i].disabled = false;
+						}
+					}
+					else
+					{
+						button.innerHTML = "Edit";
+						for (var i = 0; i < dataFields.length; i++)
+						{
+							dataFields[i].disabled = true;
+						}
+					}
+				}
+			
+				function verifyData()
+				{
+					var orderedDate = document.getElementById("orderedDate");
+					var deliveryDate = document.getElementById("deliveryDate");
+					var vendorName = document.getElementById("vendorName");
+					var vendorMobile = document.getElementById("vendorMobile");
+					var itemName = document.getElementById("itemName");
+					var quantity = document.getElementById("quantity");
+					var price = document.getElementById("price");
+
+					var isValid = true;
+					var errorMessage = "";
+
+					if (!orderedDate.value)
+					{
+						isValid = false;
+						errorMessage += "Please enter the ordered date.\n";
+						orderedDate.style.borderColor = "red";
+					}
+					else
+					{
+						orderedDate.style.borderColor = "green";
+					}
+
+					if (!deliveryDate.value)
+					{
+						isValid = false;
+						errorMessage += "Please enter the delivery date.\n";
+						deliveryDate.style.borderColor = "red";
+					}
+					else
+					{
+						deliveryDate.style.borderColor = "green";
+					}
+
+					if (!vendorName.value)
+					{
+						isValid = false;
+						errorMessage += "Please enter the vendor name.\n";
+						vendorName.style.borderColor = "red";	
+					}
+					else
+					{
+						vendorName.style.borderColor = "green";
+					}
+
+					if (!vendorMobile.value || isNaN(vendorMobile.value))
+					{
+						isValid = false;
+						errorMessage += "Please enter a valid mobile number.\n";
+						vendorMobile.style.borderColor = "red";
+					}
+					else
+					{
+						vendorMobile.style.borderColor = "green";
+					}
+
+					if (!itemName.value)
+					{
+						isValid = false;
+						errorMessage += "Please enter the item name.\n";
+						itemName.style.borderColor = "red";
+					}
+					else
+					{
+						itemName.style.borderColor = "green";
+					}
+
+					if (!quantity.value || isNaN(quantity.value) || quantity.value <= 0)
+					{
+						isValid = false;
+						errorMessage += "Please enter a valid quantity.\n";
+						quantity.style.borderColor = "red";	
+					}
+					else
+					{
+						quantity.style.borderColor = "green";
+					}
+
+					if (!price.value || isNaN(price.value) || price.value <= 0)
+					{
+						isValid = false;
+						errorMessage += "Please enter a valid price.\n";
+						price.style.borderColor = "red";
+					}
+					else
+					{
+						price.style.borderColor = "green";
+					}
+
+					if (!isValid)
+					{
+						alert(errorMessage);
+					}
+
+					return isValid;
+				}
+			</script>					
+		</body>
+	</html>

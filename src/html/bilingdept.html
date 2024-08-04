@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<img src="https://www.ie.edu/insights/wp-content/uploads/2020/11/VanSchendel-Construction.jpg" alt="Notebook" style="width: 2000px;">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			*
+			{
+				box-sizing: border-box;
+			}
+
+			head, body
+			{
+				overflow: hidden;
+			}	
+			
+			body
+			{
+				font-family: Arial;
+				font-size: 17px;
+			}
+
+			.container
+			{
+				position: middle;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.container img
+			{
+				vertical-align: left;
+			}
+
+			.container .content
+			{
+				position: absolute;
+				bottom: 10px;
+				background: rgb(0, 0, 0); /* Fallback color */
+				background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+				color: #f1f1f1;
+				width: 800px;
+				height: 815px; 
+				padding: 30px;
+				text-align: center;
+			}
+		</style>
+		</head>
+		<body>
+			<div class="container">
+				<div class="content">
+                    <title>Billing Department - Checkout</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            padding: 20px;
+                        }
+                        
+                        h1 {
+                            text-align: center;
+                        }
+                        
+                        .input-group {
+                            margin-bottom: 10px;
+                        }
+                        
+                        label {
+                            display: inline-block;
+                            width: 120px;
+                        }
+                        
+                        input[type="text"] {
+                            width: 150px;
+                            padding: 5px;
+                        }
+                        
+                        .button-group {
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+                        
+                        button {
+                            padding: 10px 20px;
+                            background-color: #4CAF50;
+                            color: white;
+                            border: none;
+                            cursor: pointer;
+                        }
+                        
+                        #totalPrice {
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin-top: 10px;
+                        }
+                        #go-to-dashboard{
+                            margin-right: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <script type="module" src="firebase.js"></script>
+                    <script type="module" src="bilingdept.js"></script>
+                    <h1>Billing Department - Checkout</h1>
+                    
+                    <div class="display">
+                        <label for="item1Price">Bricks Cost:</label>
+                        <input type="text" id="brick" disabled>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="item2Price">Cement Cost:</label>
+                        <input type="text" id="cement" disabled>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="item3Price">Clay Cost:</label>
+                        <input type="text" id="clay" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="item3Price">Concrete Cost:</label>
+                        <input type="text" id="concrete" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="item3Price">Electrical item Cost:</label>
+                        <input type="text" id="eitems" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="item3Price">furniture Cost:</label>
+                        <input type="text" id="furniture" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Glass Cost:</label>
+                        <input type="text" id="glass" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Light Cost:</label>
+                        <input type="text" id="light" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Paint Cost:</label>
+                        <input type="text" id="paint" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Reinforcement Bar Cost:</label>
+                        <input type="text" id="bar" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Sand Cost:</label>
+                        <input type="text" id="sand" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Tiles Cost:</label>
+                        <input type="text" id="tiles" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Truck Cost:</label>
+                        <input type="text" id="truck" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Wires Cost:</label>
+                        <input type="text" id="wires" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="item3Price">Wood Cost:</label>
+                        <input type="text" id="wood" disabled>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" id="go-to-dashboard" class="submit">Go To Dashboard</button>
+                        <button id="calculate-total-btn">Calculate Total</button>
+                    </div>
+                    
+                    <div>
+                        <h2>Total Price: $<span id="totalPrice">0.00</span></h2>
+                    </div>
+
+					
+				</div>
+			</div>
+		</body>
+</html>
+</body>
+</html>

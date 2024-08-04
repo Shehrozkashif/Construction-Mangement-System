@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+
+
+        </head>
+
+        <body style="background-color:black;" >
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="container">
+   
+
+   <style>
+        li
+        {
+            display:inline; 
+        }
+        #S
+        {
+            float:left;
+        }
+        #H
+        {
+            float:right;
+        }
+        .button
+        {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .button1
+        {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #4CAF50;
+        }
+        .button1:hover
+        {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .button2
+        {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #008CBA;
+        }
+        
+        .button2:hover
+        {
+            background-color: #008CBA;
+            color: white;
+        }
+        
+        .button3
+        {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #f44336;
+        }
+        
+        .button3:hover
+        {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+        </head>
+        <body>
+        
+        
+        
+       
+       
+        <ul > 
+
+    <li  id="S"> 
+        <h1 style="color:white;" > Welcome to the Construction Management System</h1>
+    </li >
+            <li id="H" >
+                <a href="projectList.html"><button class="button button1">Projects</button></a>
+            </li>
+      <li  id="H" > <a href="dashboard.html"><button class="button button2">Dashboard</button></a> </li>
+      <!----
+        <li  id="H">   <a href="newproject.html"><button class="button button3">New Project</button></a></li>
+        --->
+      
+      
+
+  </ul>
+       
+    
+    <div class="w3-content w3-section" style="max-width:1500px" height="300">
+        
+        <img class="mySlides" src="https://images.adsttc.com/media/images/5de8/6562/3312/fdbc/3500/000d/newsletter/85.jpg?1575511387" style="width:1810px"height="700px" >
+        <img class="mySlides" src="https://assets-news.housing.com/news/wp-content/uploads/2022/10/12093520/Types-of-building-materials.jpg" style="width:1810px"height="700px" >
+        <img class="mySlides" src="https://www.businesslist.pk/img/cats/construction.jpg" style="width:1810px" height="700px">
+        <img class="mySlides" src="https://media.istockphoto.com/id/1418799404/photo/excavators-working-on-construction-site-at-sunset.jpg?b=1&s=612x612&w=0&k=20&c=ioHeWVC7QnwyuJogsKTG0b1kt_je732bBJLkpHiyTQk=" style="width:1810px" height="700px">
+      </div>
+      
+      <script>
+      var myIndex = 0;
+      carousel();
+      
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 3000);
+     }
+      </script>
+      <li>
+        <a href="profile.html"><button class="button button3">About us</button></a>
+      </li>
+    </body>
+</html>

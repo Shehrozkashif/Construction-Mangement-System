@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<title>Document</title>
+			
+			<img src="https://www.ie.edu/insights/wp-content/uploads/2020/11/VanSchendel-Construction.jpg" alt="Notebook" style="width: 1800px;">
+  
+			<style>
+				*
+				{
+					box-sizing: border-box;
+					overflow: hidden;
+				}
+
+				body
+				{
+					font-family: Arial;
+				  font-size: 17px;
+				}
+
+				.container
+				{
+					position: middle;
+					max-width: 800px;
+					margin: 0 auto;
+				}
+
+				.container img 	
+				{
+					vertical-align: left;
+				}
+
+				.container .content 
+				{
+					position: absolute;
+					bottom: 0;
+					background: rgb(0, 0, 0); /* Fallback color */
+					background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+					color: #f1f1f1;
+					width: 800px;
+					height: 700px; 
+					padding: 30px;
+					bottom: 100px;
+					margin: auto;
+				}
+				
+				.container
+				{
+					text-align: center;
+				}
+				
+				.content
+				{
+					text-align: center;
+				}
+				
+				.submit
+				{
+					background-color: #4CAF50;
+					color: #fff;
+					border: none;
+					padding: 10px 20px;
+					text-align: center;
+					text-decoration: none;
+					display: inline-block;
+					font-size: 14px;
+					border-radius: 3px;
+					cursor: pointer;
+					margin-right: 10px;
+				}
+			</style>
+		</head>
+		
+		<body>
+			<script type="module" src="firebase.js"></script>
+			<script type="module" src="project.js"></script>
+		
+			<div class="container">
+
+				<div class="content">
+					<h1>Enter Project Details</h1>
+
+    
+					<form action="/action_page.php">
+						<label for="pn">Project name:</label><br>
+						<input type="text" id="pn" name="pn" value=""><br>
+						<br>
+						<label for="tf">Tender from:</label><br>
+						<input type="text" id="tf" name="tf" value=""><br><br>
+  
+						<label for="pa" >Project Adress:</label><br>
+						<input type="text" id="pa" name="pa" value=""><br><br>
+						<label for="sn">Supervisor Name:</label><br>
+						<input type="text" id="sn" name="sn" value=""><br><br>
+						<label for="td">Time Duration:</label><br>
+						<input type="text" id="td" name="td" value=""><br><br>
+						<label for="sd">Starting Date:</label>
+						<br>
+						<input type="date" id="sd" name="sd">
+						<br>
+						<br>
+						<label for="ed">Ending Date:</label>
+						<br>
+						<input type="date" id="ed" name="ed">
+						<br><br>
+						<label for="sn">Project Budget:</label><br>
+						<input type="text" id="pb" name="pb" value=""><br><br>
+						<button type="button" id="btn-submit-data" class="btn-submit">Submit</button>
+					</form> 
+				</div>
+			</div>
+		</body>
+	</html>

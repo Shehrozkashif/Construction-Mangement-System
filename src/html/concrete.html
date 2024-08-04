@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<style>
+				body
+				{
+					font-family: Arial, sans-serif;
+					background-image: url("https://www.ie.edu/insights/wp-content/uploads/2020/11/VanSchendel-Construction.jpg");
+					background-size: cover;
+					background-position: center;
+					padding: 20px;
+				}
+
+				h1
+				{
+					text-align: center;
+				}
+				.data-field
+				{
+					border: none;
+					background-color: transparent;
+					text-align: center;
+					width: 100%;
+					box-sizing: border-box;
+				}
+
+				table
+				{
+					width: 100%;
+					border-collapse: collapse;
+					margin-bottom: 20px;
+				}
+
+				th, td
+				{
+					border: 1px solid #ddd;
+					padding: 10px;
+					text-align: center;
+				}
+
+				th
+				{
+					background-color: #f5f5f5;
+				}
+
+				tr:nth-child(even)
+				{
+					background-color: #fafafa;
+				}
+
+				.input-field
+				{
+					width: 100%;
+					box-sizing: border-box;
+					padding: 5px;
+					border: 1px solid #ccc;
+					border-radius: 3px;
+					font-size: 14px;
+				}
+
+				.total-row
+				{
+					font-weight: bold;
+				}
+
+				.btn-calculate,
+				.btn-save,
+				.btn-edit
+				{
+					background-color: #4CAF50;
+					color: #fff;
+					border: none;
+					padding: 10px 20px;
+					text-align: center;
+					text-decoration: none;
+					display: inline-block;
+					font-size: 14px;
+					border-radius: 3px;
+					cursor: pointer;
+					margin-right: 10px;
+				}
+				.output
+				{	
+					width: 100%;
+					overflow-y: auto;
+					background-color: #fff;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+					display: none;
+					overflow-x: hidden;
+					
+				}
+				.scrollable-div
+				{
+					height: 200px;
+					width: 100%;
+					overflow-y: auto;
+					background-color: #fff;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+					display: inline-block;
+					overflow-x: hidden;
+					border: 1px solid #ddd;
+					border-radius: 3px;
+				}
+				
+				.scrollable-div table
+				{
+					width: 100%;
+					table-layout: fixed;
+				}
+				
+				p
+				{
+					display: inline;
+				}
+
+				.btn-calculate:hover,
+				.btn-save:hover,
+				.btn-edit:hover {
+					background-color: #45a049;
+				}
+				.paragraph
+				{
+				  display: inline;
+				}
+			</style>
+		</head>
+		<body>
+			<script type="module" src="firebase.js"></script>
+			<script type="module" src="main.js"></script>	
+			<h1>CONCRETE</h1>
+
+			<form id="billingForm">
+			<table>
+				<tr>
+					<th>Ordered Date</th>
+					<th>Delivery Date</th>
+					<th>Vendor Name</th>
+					<th>Vendor Mobile</th>
+					<th>Item Name</th>
+					<th>Quantity</th>
+					<th>Price per Item</th>
+					<th>Total Amount</th>
+				</tr>
+				<tr>
+					<td><input type="date" id="orderedDate" name="orderedDate" class="input-field" required></td>
+					<td><input type="date" id="deliveryDate" name="deliveryDate" class="input-field" required></td>
+					<td><input type="text" id="vendorName" name="vendorName" class="input-field" required></td>
+					<td><input type="tel" id="vendorMobile" name="vendorMobile" class="input-field" required></td>
+					<td><input type="text" id="itemName" name="itemName" class="input-field" required></td>
+					<td><input type="number" id="quantity" name="quantity" class="input-field" required></td>
+					<td><input type="number" step="0.01" id="price" name="price" class="input-field" required></td>
+					<td><input type="text" id="totalAmount" name="totalAmount" class="input-field" disabled readonly></td>
+				</tr>
+			</table>
+			<button type="button" id="btn-total-cal" class="btn-calculate">Calculate Total</button>
+			<button type="button" id="btn-save-data" class="btn-save">Save</button>
+			<button type="button" id="btn-edit-data" class="btn-edit" id="edtButton">Edit</button>
+			</form><br>
+			<div class = "scrollable-div" id = "scrollable-div">		
+				<table id="data-table">
+					<tr>
+						<th>Ordered Date</th>
+						<th>Delivery Date</th>
+						<th>Vendor Name</th>
+						<th>Vendor Mobile</th>
+						<th>Item Name</th>
+						<th>Quantity</th>
+						<th>Price per Item</th>
+						<th>Total Amount</th>
+					</tr>
+				</table>
+			</div>      
+			<br><br>
+			<div class="output" id="output">
+	
+			</div>
+    				
+		</body>
+	</html>
